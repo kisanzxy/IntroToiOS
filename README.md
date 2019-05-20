@@ -39,6 +39,10 @@ __weak, __strong, __autoreleasing, __unsafe_unretained
 
 
 
+### objective c 中的多线程
+
+http://www.cocoachina.com/ios/20150731/12819.html
+
 
 
 
