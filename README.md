@@ -1,5 +1,19 @@
-# IntroToiOS
-personal practice for iOS development<br>
+# iOS learning note
+
+### selector vs. method vs. message
+Selector - a Selector is the name of a method. You're very familiar with these selectors: alloc, init, release, dictionaryWithObjectsAndKeys:, setObject:forKey:, etc. Note that the colon is part of the selector; it's how we identify that this method requires parameters. Also (though it's extremely rare), you can have selectors like this: doFoo:::. This is a method that takes three parameters, and you'd invoke it like [someObject doFoo:arg1 :arg2 :arg3]. There's no requirement that there be letters before each part of the selector components. As I said, this is extremely rare, and you will not find it used in the Cocoa frameworks. You can work with selectors directly in Cocoa. They have the type SEL:  SEL aSelector = @selector(doSomething:) or SEL aSelector = NSSelectorFromString(@"doSomething:");
+
+Message - a message is a selector and the arguments you are sending with it. If I say [dictionary setObject:obj forKey:key], then the "message" is the selector setObject:forKey: plus the arguments obj and key. Messages can be encapsulated in an NSInvocation object for later invocation. Messages are sent to a receiver. (ie, the object that "receives" the message).
+
+Method - a method is a combination of a selector and an implementation (and accompanying metadata). The "implementation" is the actual block of code; it's a function pointer (an IMP). An actual method can be retrieved internally using a Method struct (retrievable from the runtime).
+
+Method Signature - a method signature represents the data types returned by and accepted by a method. They can be represented at runtime via an NSMethodSignature and (in some cases) a raw char*.
+
+Implementation - the actual executable code of a method. Its type at runtime is an IMP, and it's really just a function pointer. iOS 4.3 includes a new ability to turn a block into an IMP. This is really cool.
+
+source: https://stackoverflow.com/questions/5608476/whats-the-difference-between-a-method-and-a-selector
+
+
 
 ### ARC
 未指定初始值的变量都会被初始化为**nil**<br>
