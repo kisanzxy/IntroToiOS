@@ -35,7 +35,19 @@ while weak reference will not affect the reference counts, and will be automatic
 __weak, __strong, __autoreleasing, __unsafe_unretained
 
 
+### Target-Action
+**target** : the receiver of an action message
 
+**action** : the message a control send to the target(stored a SEL type)
+
+```
+- (void)capitalizeWord:(id) sender
+- (IBAction) deleteRecord:(id) sender
+ ```
+IBAction is a type qualifier 
+the sender parameter identifies the control sending the action message 
+
+more details refer to: https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Target-Action/Target-Action.html
 
 
 
