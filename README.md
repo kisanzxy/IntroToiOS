@@ -47,7 +47,19 @@ __weak, __strong, __autoreleasing, __unsafe_unretained
 IBAction is a type qualifier 
 the sender parameter identifies the control sending the action message 
 
-more details refer to: https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Target-Action/Target-Action.html
+to set the target and action programmatically
+you need to definde the setAction and setTarget method to send messages to a control or to cell object
+```
+- (void)setTarget:(id)anObject;
+- (void)setAction:(SEL)aSelector;
+```
+to use this methods
+```
+[aCell setTarget: myController]
+[aControl setAction: @selector(deleteRecord)]
+```
+
+
 
 
 
