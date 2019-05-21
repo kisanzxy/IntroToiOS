@@ -41,8 +41,9 @@ __weak, __strong, __autoreleasing, __unsafe_unretained
 **action** : the message a control send to the target(stored a SEL type)
 
 ```
-- (void)capitalizeWord:(id) sender
-- (IBAction) deleteRecord:(id) sender
+- (void)capitalizeWord:(id)sender
+- (IBAction)deleteRecord:(id)sender
+- (void)action:(id)sender forEvent:(UIEvent *)event //UIKit
  ```
 IBAction is a type qualifier 
 the sender parameter identifies the control sending the action message 
