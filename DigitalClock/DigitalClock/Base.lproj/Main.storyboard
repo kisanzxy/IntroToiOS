@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="digital-7.ttf">
+            <string>Digital-7</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rs1-E8-iZw">
+                                <rect key="frame" x="35" y="404.5" width="344" height="87.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87.5" id="1e7-V7-o97"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Digital-7" family="Digital-7" pointSize="96"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x18-nm-Sq9">
+                                <rect key="frame" x="35" y="518" width="344" height="281"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s5y-cP-J4R">
+                                        <rect key="frame" x="8" y="49" width="328" height="29"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <segments>
+                                            <segment title="dark"/>
+                                            <segment title="Light"/>
+                                        </segments>
+                                        <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <connections>
+                                            <action selector="changeClcokColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="XRN-Nh-Kyd"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-ak-bCU">
+                                        <rect key="frame" x="8" y="117" width="328" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Light"/>
+                                        </segments>
+                                        <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <connections>
+                                            <action selector="changeBgColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="CJV-6p-vPv"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Clock Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPh-eY-gTx">
+                                        <rect key="frame" x="8" y="20" width="328" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Backgroud Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wF-3e-fA0">
+                                        <rect key="frame" x="8" y="80" width="328" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="hLe-yU-ouA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="s5y-cP-J4R" firstAttribute="top" secondItem="fPh-eY-gTx" secondAttribute="bottom" constant="8" symbolic="YES" id="3nn-nD-3Hk"/>
+                                    <constraint firstItem="7wF-3e-fA0" firstAttribute="top" secondItem="x18-nm-Sq9" secondAttribute="top" constant="80" id="DcU-F0-UbO"/>
+                                    <constraint firstAttribute="trailing" secondItem="7wF-3e-fA0" secondAttribute="trailing" constant="8" id="E83-kd-vIe"/>
+                                    <constraint firstItem="FZZ-ak-bCU" firstAttribute="leading" secondItem="x18-nm-Sq9" secondAttribute="leading" constant="8" id="IoU-f3-r3f"/>
+                                    <constraint firstItem="fPh-eY-gTx" firstAttribute="leading" secondItem="x18-nm-Sq9" secondAttribute="leading" constant="8" id="KUr-4q-nyT"/>
+                                    <constraint firstItem="7wF-3e-fA0" firstAttribute="leading" secondItem="x18-nm-Sq9" secondAttribute="leading" constant="8" id="UqN-tQ-exK"/>
+                                    <constraint firstAttribute="trailing" secondItem="fPh-eY-gTx" secondAttribute="trailing" constant="8" id="W9C-dO-JeA"/>
+                                    <constraint firstItem="s5y-cP-J4R" firstAttribute="leading" secondItem="x18-nm-Sq9" secondAttribute="leading" constant="8" id="WeY-oI-XfF"/>
+                                    <constraint firstItem="FZZ-ak-bCU" firstAttribute="top" secondItem="7wF-3e-fA0" secondAttribute="bottom" constant="8" symbolic="YES" id="aw7-eB-FQb"/>
+                                    <constraint firstAttribute="trailing" secondItem="s5y-cP-J4R" secondAttribute="trailing" constant="8" id="cfo-2H-N9E"/>
+                                    <constraint firstItem="7wF-3e-fA0" firstAttribute="top" secondItem="s5y-cP-J4R" secondAttribute="bottom" constant="3" id="hlg-RH-6ay"/>
+                                    <constraint firstAttribute="trailing" secondItem="FZZ-ak-bCU" secondAttribute="trailing" constant="8" id="vbN-gQ-kSz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDX-s8-6gC">
+                                <rect key="frame" x="35" y="819" width="344" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Show Settings">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showSettings:" destination="BYZ-38-t0r" eventType="touchDown" id="ZQt-B2-G2D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iDX-s8-6gC" secondAttribute="bottom" constant="13" id="3lW-f8-QvD"/>
+                            <constraint firstItem="rs1-E8-iZw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="Bxf-Sk-pXc"/>
+                            <constraint firstItem="x18-nm-Sq9" firstAttribute="top" secondItem="rs1-E8-iZw" secondAttribute="bottom" constant="26" id="EBo-2d-N8f"/>
+                            <constraint firstItem="rs1-E8-iZw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EHh-3N-JQw"/>
+                            <constraint firstItem="iDX-s8-6gC" firstAttribute="trailing" secondItem="x18-nm-Sq9" secondAttribute="trailing" id="Hqh-cm-6Fh"/>
+                            <constraint firstItem="iDX-s8-6gC" firstAttribute="leading" secondItem="x18-nm-Sq9" secondAttribute="leading" id="MPb-2W-hhJ"/>
+                            <constraint firstItem="rs1-E8-iZw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NZA-7k-T0u"/>
+                            <constraint firstItem="rs1-E8-iZw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OXx-z3-cdP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x18-nm-Sq9" secondAttribute="trailing" constant="35" id="TOY-kk-Tbh"/>
+                            <constraint firstItem="rs1-E8-iZw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VFo-aC-bCo"/>
+                            <constraint firstItem="iDX-s8-6gC" firstAttribute="top" secondItem="x18-nm-Sq9" secondAttribute="bottom" constant="20" id="lgI-oH-iUB"/>
+                            <constraint firstItem="x18-nm-Sq9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="m6S-jQ-STI"/>
+                            <constraint firstItem="rs1-E8-iZw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rgq-GJ-wrR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="background" destination="8bC-Xf-vdC" id="FqJ-e7-Aqm"/>
+                        <outlet property="bgColorSegCtrl" destination="FZZ-ak-bCU" id="oJB-ei-FnA"/>
+                        <outlet property="colorSegCtrl" destination="s5y-cP-J4R" id="Mod-9d-9Sr"/>
+                        <outlet property="label" destination="rs1-E8-iZw" id="Vtq-zW-eFh"/>
+                        <outlet property="settingButton" destination="iDX-s8-6gC" id="rGK-3g-0jc"/>
+                        <outlet property="settingView" destination="x18-nm-Sq9" id="AUt-Jo-6Jc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
