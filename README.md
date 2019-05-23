@@ -77,8 +77,14 @@ https://www.jianshu.com/p/ea3f90cc744b <br>
 ### UIkit
 https://www.cnblogs.com/lbjventure/p/4343370.html
 
+### YYModel
+https://github.com/kisanzxy/YYModel
+YYModel 详解
+https://www.jianshu.com/p/25e678fa43d3
+
 ##### @property
 https://www.devtalking.com/articles/you-should-to-know-property/
+
 
 getter and setter . operation
 when instance variables are not explicitly declared, a variable start with "_" will autamatically be declared.
