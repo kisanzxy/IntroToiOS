@@ -40,8 +40,33 @@ performBatchUpdates: ^(block)() completion: (id)
 
 #### layers in cell
 when adding view, add to **contentView**, not self
-between **contentView** and **UICollectionViewCell** thiere is **selectedBackgroundView## , ##backgroudView##
+between **contentView** and **UICollectionViewCell** thiere is **selectedBackgroundView** , **backgroudView**
 
+### UICollectionFlowLayout自定义布局
+```
+常用属性
+//同一组当中，行与行之间的最小行间距，但是不同组之间的不同行cell不受这个值影响。
+@property (nonatomic) CGFloat minimumLineSpacing;
+//同一行的cell中互相之间的最小间隔，设置这个值之后，那么cell与cell之间至少为这个值
+@property (nonatomic) CGFloat minimumInteritemSpacing;
+//每个cell统一尺寸
+@property (nonatomic) CGSize itemSize;
+//滑动反向，默认滑动方向是垂直方向滑动
+@property (nonatomic) UICollectionViewScrollDirection scrollDirection;
+//每一组头视图的尺寸。如果是垂直方向滑动，则只有高起作用；如果是水平方向滑动，则只有宽起作用。
+@property (nonatomic) CGSize headerReferenceSize;
+//每一组尾部视图的尺寸。如果是垂直方向滑动，则只有高起作用；如果是水平方向滑动，则只有宽起作用。
+@property (nonatomic) CGSize footerReferenceSize;
+//每一组的内容缩进
+@property (nonatomic) UIEdgeInsets sectionInset;
+继承##UICollectionFlowLayout##, 重写 ##init##方法
+```
+
+创建一个类，继承于 **UICollectionViewFlowlayout**，重写它 ```init``` 方法 (对layout的设置)
+#### 重写布局方法 layoutAttributesForElementsInRect:
+
+通过父类方法 ```[super layoutAttributesForElementsInRect:rect]``` 先创建了一个正常情况下的所有属性的数组。这个父类方法默认情况下，只会创建在 ```rect``` 范围内的视图的布局属性。
+修改的时候我们还要判断 ```attrs.representedElementKind == nil```。这是由于这个属性数组包含了所有视图的布局信息，包括 cell,supplementary view,decortation view。当 ##representedElementKind## 是 ```nil``` 的时候，表示这个布局信息是  ```Item``` 的布局信息。
 
 
 
