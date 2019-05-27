@@ -68,5 +68,22 @@ between **contentView** and **UICollectionViewCell** thiere is **selectedBackgro
 通过父类方法 ```[super layoutAttributesForElementsInRect:rect]``` 先创建了一个正常情况下的所有属性的数组。这个父类方法默认情况下，只会创建在 ```rect``` 范围内的视图的布局属性。
 修改的时候我们还要判断 ```attrs.representedElementKind == nil```。这是由于这个属性数组包含了所有视图的布局信息，包括 cell,supplementary view,decortation view。当 ##representedElementKind## 是 ```nil``` 的时候，表示这个布局信息是  ```Item``` 的布局信息。
 
+### layoutSubview
+layoutSubview ：为该View添加子控件，设置frame值
+layoutSubview的调用场景：
+
+使用addSubview添加时会调用layoutSubView
+设置视图的父视图的Size时会调用
+改变视图的frame的时候会被调用
+滚动scrollview的时候会被调用
+设备的orientation(方向)改变时,涉及改变的UIViewControl 的root view
+(此时所有的控件被重新布局,相当于A的frame被改变 那么会调用layoutSubview 而且如果控件有B的话会再调用一次layoutSubview)
+调用setNeedsLayout时会被调用
+
+layoutSubview不是在调用完比如addSubview等方法之后就马上调用,而是会在调用addSubview方法所在的作用域结束之后之后才调用,因此即使你在同一个方法中既使用了addSubViews又更改了frame，也是只会调用一次layoutSubview而已
+
+source：https://www.jianshu.com/p/0ec6ef1c39a5
+
+
 
 
