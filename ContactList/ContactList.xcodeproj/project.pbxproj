@@ -15,6 +15,7 @@
 		4D90A1482294225700126E17 /* ContactListUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D90A1472294225700126E17 /* ContactListUITests.m */; };
 		4D90A157229425F400126E17 /* XYContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D90A156229425F400126E17 /* XYContact.m */; };
 		4D90A15A22942A6F00126E17 /* XYContactGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D90A15922942A6F00126E17 /* XYContactGroup.m */; };
+		4DD447942296736A00FCFE0C /* XYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD447932296736A00FCFE0C /* XYSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,9 @@
 		4D90A156229425F400126E17 /* XYContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYContact.m; sourceTree = "<group>"; };
 		4D90A158229428A600126E17 /* XYContactGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYContactGroup.h; sourceTree = "<group>"; };
 		4D90A15922942A6F00126E17 /* XYContactGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYContactGroup.m; sourceTree = "<group>"; };
+		4DD447912296722700FCFE0C /* XYTopScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYTopScrollViewController.h; sourceTree = "<group>"; };
+		4DD447922296725600FCFE0C /* XYSearchVIewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYSearchVIewController.h; sourceTree = "<group>"; };
+		4DD447932296736A00FCFE0C /* XYSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 		4D90A1222294225700126E17 /* ContactList */ = {
 			isa = PBXGroup;
 			children = (
+				4DD447922296725600FCFE0C /* XYSearchVIewController.h */,
+				4DD447932296736A00FCFE0C /* XYSearchViewController.m */,
 				4D90A1232294225700126E17 /* AppDelegate.h */,
 				4D90A1242294225700126E17 /* AppDelegate.m */,
 				4D90A1262294225700126E17 /* XYMainViewController.h */,
@@ -114,6 +120,7 @@
 				4D90A156229425F400126E17 /* XYContact.m */,
 				4D90A158229428A600126E17 /* XYContactGroup.h */,
 				4D90A15922942A6F00126E17 /* XYContactGroup.m */,
+				4DD447912296722700FCFE0C /* XYTopScrollViewController.h */,
 			);
 			path = ContactList;
 			sourceTree = "<group>";
@@ -265,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D90A1282294225700126E17 /* XYMainViewController.m in Sources */,
+				4DD447942296736A00FCFE0C /* XYSearchViewController.m in Sources */,
 				4D90A1332294225700126E17 /* main.m in Sources */,
 				4D90A15A22942A6F00126E17 /* XYContactGroup.m in Sources */,
 				4D90A1252294225700126E17 /* AppDelegate.m in Sources */,

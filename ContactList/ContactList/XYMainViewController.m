@@ -10,17 +10,19 @@
 #import "XYContact.h"
 #import "XYContactGroup.h"
 #import <UIKit/UIKit.h>
-
+#import "XYSearchVIewController.h"
 #define XYContactToolbarHeight 44
 #define XYContactSearchbarHeight 60
 
-@interface XYMainViewController ()<UITableViewDataSource, UITableViewDelegate>{
+@interface XYMainViewController ()<UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>{
     
-    UITableView *_tableView;
+    //UITableView *_tableView;
     //UISearchBar *_searchBar;
     NSMutableArray *_contacts; //contacts model
-    //NSMutableArray *_searchContacts;
+    NSMutableArray *_searchResults;
+    NSMutableArray *_searchContacts;
     NSIndexPath *_selectedIndexPath;
+    UISearchController *_searchController;
     
     UIToolbar *_toolbar;
     BOOL _isInsert;
@@ -34,13 +36,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initData];
-    _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    _tableView.contentInset = UIEdgeInsetsMake(XYContactToolbarHeight, 0, 0, 0);
-    [self.view addSubview:_tableView];
+    //_tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+   // _tableView.contentInset = UIEdgeInsetsMake(XYContactToolbarHeight, 0, 0, 0);
+    
+    UINavigationController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"TableSearchResultsNavController"];
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
+    
+    _searchController.searchResultsUpdater = self;
+    
+    
     [self addToolbar];
+    [self addSearchBar];
     //[self addSearchBar];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     
 }
@@ -105,7 +114,7 @@
     XYContact *contact = group.contacts[indexPath.row];
 
     
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:contactCell];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:contactCell];
     if (cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:contactCell];
         cell.accessoryType = UITableViewCellAccessoryDetailButton;
@@ -150,57 +159,7 @@
     return indexes;
 }
 
-//#pragma mark - searchbar delegate
-//#pragma mark  cancel search
-//-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-//    _isSearching=NO;
-//    _searchBar.text=@"";
-//    [self.tableView reloadData];
-//}
-//
-//#pragma mark input keyword
-//-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-//    if([_searchBar.text isEqual:@""]){
-//        _isSearching=NO;
-//        [self.tableView reloadData];
-//        return;
-//    }
-//    [self searchDataWithKeyWord:_searchBar.text];
-//}
-//
-//#pragma mark type virtual keyboard enter
-//-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-//    
-//    [self searchDataWithKeyWord:_searchBar.text];
-//    
-//    [_searchBar resignFirstResponder];//放弃第一响应者对象，关闭虚拟键盘
-//}
-//#pragma mark generate search data
-//-(void)searchDataWithKeyWord:(NSString *)keyWord{
-//    _isSearching=YES;
-//    _searchContacts=[NSMutableArray array];
-//    [_contacts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        XYContactGroup *group=obj;
-//        [group.contacts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            XYContact *contact=obj;
-//            if ([contact.firstName.uppercaseString containsString:keyWord.uppercaseString]||[contact.lastName.uppercaseString containsString:keyWord.uppercaseString]||[contact.phoneNumber containsString:keyWord]) {
-//                [self->_searchContacts addObject:contact];
-//            }
-//        }];
-//    }];
-//    // reload table
-//    [self.tableView reloadData];
-//}
-//
-//#pragma mark add search bar
-//-(void)addSearchBar{
-//    CGRect searchBarRect=CGRectMake(0, 0, self.view.frame.size.width, XYContactSearchbarHeight);
-//    _searchBar=[[UISearchBar alloc]initWithFrame:searchBarRect];
-//    _searchBar.placeholder=@"Please input key word...";
-//    _searchBar.showsCancelButton=YES;
-//    _searchBar.delegate=self;
-//    self.tableView.tableHeaderView=_searchBar;
-//}
+
 
 #pragma mark delegateMethods
 #pragma mark setTitleHeight
@@ -266,23 +225,30 @@
 - (void) addToolbar{
     CGRect frame = self.view.frame;
     _toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, frame.size.height-XYContactToolbarHeight, frame.size.width, XYContactToolbarHeight)];
-    [self.view addSubview:_toolbar];
     UIBarButtonItem *removeButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(remove)];
     UIBarButtonItem *flexibleButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickAdd:)];
     NSArray *buttons = [NSArray arrayWithObjects:removeButton, flexibleButton, addButton, nil];
     _toolbar.items = buttons;
+    self.tableView.tableFooterView = _toolbar;
+}
+
+#pragma mark addSearchBar
+- (void) addSearchBar{
+    CGRect frame = self.view.frame;
+    _searchController.searchBar.frame = CGRectMake(0, 0, frame.size.width, XYContactSearchbarHeight);
+    self.tableView.tableHeaderView = _searchController.searchBar;
 }
 
 - (void)clickAdd:(UIButton *)sender {
     _isInsert = YES;
-    [_tableView setEditing:!_tableView.isEditing animated:YES];
+    [self.tableView setEditing:!self.tableView.isEditing animated:YES];
 }
 
 #pragma mark remove
 - (void) remove{
     _isInsert = NO;
-    [_tableView setEditing:!_tableView.isEditing animated:YES];
+    [self.tableView setEditing:!self.tableView.isEditing animated:YES];
 }
 
 #pragma mark delete and insert
@@ -344,5 +310,32 @@
         [_contacts removeObject:sourceGroup];
         [tableView reloadData];
     }
+}
+
+#pragma mark - UISearchControllerDelegate & UISearchResultsDelegate
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    
+    NSString *searchString = searchController.searchBar.text;
+    [self searchDataWithKeyWord:searchString];
+    if(_searchController.searchResultsController){
+        UINavigationController *navController = (UINavigationController *)_searchController.searchResultsController;
+        XYSearchViewController *vc =(XYSearchViewController *)navController.topViewController;
+        vc.searchResults = _searchResults;
+        [vc.tableView reloadData];
+    }
+}
+
+-(void)searchDataWithKeyWord:(NSString *)keyWord{
+    _isSearching=YES;
+    _searchResults=[NSMutableArray array];
+    [_contacts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        XYContactGroup *group=obj;
+        [group.contacts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            XYContact *contact=obj;
+            if ([contact.firstName.uppercaseString containsString:keyWord.uppercaseString]||[contact.lastName.uppercaseString containsString:keyWord.uppercaseString]||[contact.phoneNumber containsString:keyWord]) {
+                [self->_searchResults addObject:contact];
+            }
+        }];
+    }];
 }
 @end
