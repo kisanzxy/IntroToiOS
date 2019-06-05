@@ -93,4 +93,7 @@ https://www.devtalking.com/articles/you-should-to-know-property/
 getter and setter . operation
 when instance variables are not explicitly declared, a variable start with "_" will autamatically be declared.
 
+###ios开发必备知识点
+https://www.jianshu.com/p/ea10e5a03c70
+
 
