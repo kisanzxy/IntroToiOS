@@ -82,6 +82,10 @@ https://github.com/kisanzxy/YYModel
 YYModel 详解
 https://www.jianshu.com/p/25e678fa43d3
 
+###YYCatche详解
+https://juejin.im/post/5a657a946fb9a01cb64ee761
+
+
 ##### @property
 https://www.devtalking.com/articles/you-should-to-know-property/
 
