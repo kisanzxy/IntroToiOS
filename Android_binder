@@ -1,0 +1,13 @@
+binder： communication between processes
+
+memory addresses are shared between processes
+
+UI Thread
+
+interact with AMS and ... 
+Binder Thread1
+Binder Thread2
+
+
+application thread instance local service 
+
