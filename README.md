@@ -67,6 +67,8 @@ to use this methods
 ### objective c 中的多线程
 
 http://www.cocoachina.com/ios/20150731/12819.html
+深入理解GCD
+https://justinyan.me/post/2420
 
 
 
